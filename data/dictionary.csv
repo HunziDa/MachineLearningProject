@@ -4,7 +4,7 @@ text,label_meaning
 这学期你一周才两节课啊。,3. lower than expected
 只有社会主义才能救中国。,4. necessary condition
 我领你去个地方，那儿才安静呢。,5. emphasize a fact
-这人很有才。,6. not adverb
+这人很有才。,0. not adverb
 看也没看，怎么会记得？我又不是才上城来的乡巴佬。,1. just happened
 门牙换过了没有？换过了，前天才长起来的。,1. just happened
 刚来，就要走？也不歇歇。,1. just happened
@@ -112,7 +112,7 @@ text,label_meaning
 这才是真正的张小泉剪刀。,5. emphasize a fact
 这才是北大水平。,5. emphasize a fact
 北京的琉璃制品才是中华国粹。,5. emphasize a fact
-咸板鸭才是南京的名产，要热吃，也是香得好，肉要肥要厚，才有咬嚼。,5. emphasize a fact
+咸板鸭才是南京的名产，要热吃，也是香得好。,5. emphasize a fact
 这所房于从运河中看，好像在水里。下两层是玲珑的架子，上一层才是屋子。,5. emphasize a fact
 说老实话，想他了吧？我才不想他呢！,5. emphasize a fact
 这是怎么说的！吃药了吗？我才不吃药。,5. emphasize a fact
@@ -120,3 +120,10 @@ text,label_meaning
 我干吗呀？我才不把新裤子、新毛衣都弄湿了呢。,5. emphasize a fact
 秦始皇姓什么？难道姓秦吗？才不呢。,5. emphasize a fact
 这个人才不文明呢。,5. emphasize a fact
+本党对于国家兴亡，必当尽其心思才力，贯彻始终。,0. not adverb
+为满足“引才”需求，新疆对应聘大学生作出硬性规定：须政治素质好、学业成绩优良、志愿到基层一线和艰苦地区工作。,0. not adverb
+在改革开放的新时代，杰出的人才不断地涌现出来。,0. not adverb
+老胡很有才华，写得一手好文章。,0. not adverb
+哥哥的才干得到了领导的赏识，工作没多久就被委以重任。,0. not adverb
+天才在于积累，聪明在于勤奋。,0. not adverb
+他才气很高，所写作品确有过人之处，是我们望尘莫及的。,0. not adverb
