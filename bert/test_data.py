@@ -6,7 +6,7 @@ import joblib
 from transformers import BertTokenizer, BertModel
 tokenizer = BertTokenizer.from_pretrained('bert-base-chinese') 
 model = BertModel.from_pretrained('bert-base-chinese', output_hidden_states=True)
-kmeans = joblib.load('kmeans_才.pkl')
+kmeans = joblib.load('kmeans_才_3.pkl')
 char = '才'
 
 def get_word_vector(text, char):
@@ -33,7 +33,7 @@ for i in range(len(text_data)):
 vectors = np.array(vector_list)
 
 cluster_labels = kmeans.predict(vectors)
-df['label_predicted'] = cluster_labels
+df['label_predicted_3'] = cluster_labels
 
 # 将带有预测标签的数据写回CSV文件
 df.to_csv('data\dictionary_才.csv', index=False)

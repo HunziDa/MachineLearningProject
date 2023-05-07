@@ -47,20 +47,23 @@ vectors = np.array(vector_list)
 print("mid")
 os.environ["OMP_NUM_THREADS"] = "1"
 
-num_clusters = 6
+num_clusters = 3
 max_iterations = 100
 
-init_centers = vectors[:num_clusters]
+init_centers = []
+init_centers.append(vectors[1])
+init_centers.append(vectors[2])
+init_centers.append(vectors[5])
 
 # 使用指定的初始质心
 kmeans = KMeans(n_clusters=num_clusters, init=init_centers, random_state=0)
 kmeans.fit(vectors)
 
 cluster_labels = kmeans.labels_ # shape: (n,)
-joblib.dump(kmeans, 'kmeans_才.pkl')
+joblib.dump(kmeans, 'kmeans_才_3.pkl')
 
 new_column = pd.Series(cluster_labels)
-df['label_predicted'] = new_column
+df['label_predicted_3'] = new_column
 df.to_csv('data\corpus_才.csv', index=False)
 
 print(cluster_labels)
