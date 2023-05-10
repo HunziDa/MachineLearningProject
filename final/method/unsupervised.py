@@ -8,6 +8,9 @@ from torch.utils.data import Dataset, DataLoader
 from transformers import BertTokenizer, BertModel
 from sklearn.cluster import KMeans, AgglomerativeClustering
 
+train_path = "final/corpus/unlabelled.csv"
+num_clusters = 5
+
 class TextDataset(Dataset):
     def __init__(self, file_path):
         self.data = pd.read_csv(file_path)
@@ -19,12 +22,10 @@ class TextDataset(Dataset):
         text = self.data['text'][i]
         return text
 
-train_data = TextDataset('data\corpus_才.csv')
+train_data = TextDataset(train_path)
 
 tokenizer = BertTokenizer.from_pretrained('bert-base-chinese') 
 model = BertModel.from_pretrained('bert-base-chinese', output_hidden_states=True)
-
-df = pd.read_csv('data\corpus_才.csv', encoding="utf-8")
 
 char = '才'
 def get_word_vector(text, char):
@@ -42,29 +43,26 @@ for i in range(len(train_data)):
     text = train_data[i]
     tensor_tmp = get_word_vector(text, char)
     vector_list.append(tensor_tmp)
+    if i%50 == 0:
+        print('Index [{}/{}]'.format(i + 1, len(train_data)))
 vectors = np.array(vector_list)
 
-print("mid")
 os.environ["OMP_NUM_THREADS"] = "1"
 
-num_clusters = 3
 max_iterations = 100
 
 init_centers = []
+init_centers.append(vectors[0])
 init_centers.append(vectors[1])
 init_centers.append(vectors[2])
-init_centers.append(vectors[5])
+init_centers.append(vectors[3])
+init_centers.append(vectors[4])
+
 
 # 使用指定的初始质心
 kmeans = KMeans(n_clusters=num_clusters, init=init_centers, random_state=0)
 kmeans.fit(vectors)
 
 cluster_labels = kmeans.labels_ # shape: (n,)
-joblib.dump(kmeans, 'kmeans_才_3.pkl')
-
-new_column = pd.Series(cluster_labels)
-df['label_predicted_3'] = new_column
-df.to_csv('data\corpus_才.csv', index=False)
-
-print(cluster_labels)
+joblib.dump(kmeans, 'final/model/kmeans_5.pkl')
 
